@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>School Management App</title>
+</head>
+
+<body>
+	<h1>Students List</h1>
+	<ul>
+		<?php
+
+		$json = file_get_contents('http://students-service/');
+		$obj = json_decode($json);
+
+		$students = $obj->students;
+
+		foreach ($students as $students) {
+			echo "<li>$students</li>";
+		}
+
+		?>
+	</ul>
+</body>
+</html>

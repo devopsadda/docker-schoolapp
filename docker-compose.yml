@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  students-service:
+    build: ./students-list
+    volumes:
+      - ./students-list:/usr/src/app
+    ports:
+      - 8081:80
+
+  website:
+    image: php:apache
+    volumes:
+      - ./website:/var/www/html
+    ports:
+      - 8080:80
+    depends_on:
+      - students-service
+
+
